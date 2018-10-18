@@ -1,0 +1,7 @@
+C:\Users\GC Student\Source\Repos\Task List - Capstone 2\Task List - Capstone 2\bin\Debug\Task List - Capstone 2.exe.config
+C:\Users\GC Student\Source\Repos\Task List - Capstone 2\Task List - Capstone 2\bin\Debug\Task List - Capstone 2.exe
+C:\Users\GC Student\Source\Repos\Task List - Capstone 2\Task List - Capstone 2\bin\Debug\Task List - Capstone 2.pdb
+C:\Users\GC Student\Source\Repos\Task List - Capstone 2\Task List - Capstone 2\obj\Debug\Task List - Capstone 2.csprojAssemblyReference.cache
+C:\Users\GC Student\Source\Repos\Task List - Capstone 2\Task List - Capstone 2\obj\Debug\Task List - Capstone 2.csproj.CoreCompileInputs.cache
+C:\Users\GC Student\Source\Repos\Task List - Capstone 2\Task List - Capstone 2\obj\Debug\Task List - Capstone 2.exe
+C:\Users\GC Student\Source\Repos\Task List - Capstone 2\Task List - Capstone 2\obj\Debug\Task List - Capstone 2.pdb
