@@ -60,11 +60,37 @@ namespace Task_List___Capstone_2
                         break;
                     case 4:
                         //Mark Task Complete
+                        Console.WriteLine($"WHich task # would you like to complete? 1-{taskList.Count}");
+                        int x = IsGoodDigit(Console.ReadLine(), taskList.Count);
+                        x--;
+                        Console.WriteLine($"Task {x}");
+                        Console.WriteLine("Done?      Due Date     Team Member     Description");
+                        Console.WriteLine($"{taskList[x].DoneNotDone}     {taskList[x].DueDate}     {taskList[x].MemberName}     {taskList[x].BriefDescription}");
+                        Console.WriteLine();
+
+                        Console.WriteLine($"Are you sure you want to compelete this task? Y/N: ");                        
+                        if (Assurances())
+                        {
+                            taskList[x].DoneNotDone = true; ;
+                        }                       
+                        else
+                        {
+                            Console.WriteLine("Returning to main menu.");
+                        }                        
                         break;
                     case 5:
-                        ender = false;
+                        //Exits the program
+                        Console.Write("Are you sure you want to exit? Y/N: ");
+                        
+                        if (Assurances())
+                        {
+                            ender = true;
+                        }
+                        else
+                        {
+                            ender = false;
+                        }
                         break;
-
                     default:
                         break;
                         
@@ -179,26 +205,49 @@ namespace Task_List___Capstone_2
         public static int DeleteTask(int range)
         {
             Console.Write($"Which task would you like to delete? \n 1-{range}: ");
-            int x = IsGoodDigit(Console.ReadLine(), (range));
+            int x = IsGoodDigit(Console.ReadLine(), range);
             Console.Write($"Are you sure you want to delete task # {x}? \nY/N: ");
             string confirm = Console.ReadLine();
             confirm = confirm.ToLower();
-            if (confirm == "y")
+            if (Assurances())
             {
                 Console.WriteLine($"Deleting task # {x}...");                
             }
-            else if (confirm == "n")
+            else
             {
                 x = -1;
             }
-            else
-            {
-                Console.WriteLine("I didn't understand that.");
-                x = DeleteTask(range);
-            }
             x--;
             return x;
-
         }
+        public static bool Assurances()
+        {
+            bool booly;
+            try
+            {
+                string confirm = Console.ReadLine();
+                confirm = confirm.ToLower();
+                if (confirm == "y")
+                {
+                    booly = true;
+                }
+                else if (confirm == "n")
+                {
+                    booly = false;
+                }
+                else
+                {
+                    throw new Exception("I didn't understand that. Inpt must be either 'Y' or 'N'.");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.Write("Please try again: ");
+                booly = Assurances();
+            }
+            return booly;
+        }
+
     }
 }

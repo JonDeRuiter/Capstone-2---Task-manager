@@ -12,7 +12,7 @@ namespace Task_List___Capstone_2
         private string memberName;
         private string briefDescription;
         private DateTime dueDate;
-        private bool doneNotDone = false;
+        private bool doneNotDone;
 
         //Properties
         public string MemberName
@@ -41,7 +41,8 @@ namespace Task_List___Capstone_2
         {
             this.memberName = memberName;
             this.briefDescription = briefDescription;
-            this.dueDate = dueDate;            
+            this.dueDate = dueDate;
+            this.DoneNotDone = false;
         }
 
         //Methods
