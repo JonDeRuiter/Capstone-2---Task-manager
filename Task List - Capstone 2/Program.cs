@@ -10,13 +10,13 @@ namespace Task_List___Capstone_2
     {
         static void Main(string[] args)
         {
-            //build a task class with members: Team Member Name, Brief Task descritpion, Due Date, Whether or not it's been completed
-
-            //Make a list to easy add and delete task objects 
+            
+            //List for task objects 
             List<Task> taskList = new List<Task>();
 
             bool ender = true;
 
+            //Object values for populating the tasklist while testing
             DateTime dueDate = DateTime.Parse("1 / 12 / 2019");
 
             Task firstTask = new Task("Jimmy John", "Make a Sandwich", dueDate);
@@ -24,8 +24,8 @@ namespace Task_List___Capstone_2
             taskList.Add(firstTask);
             taskList.Add(secondTask);
 
-            //Make the date display w/out the time
-
+            
+            //This switch statement and do-while loop, call up the main menu and do the actions for the selected line
             do
             {
                 int choice = Menu();
@@ -37,7 +37,7 @@ namespace Task_List___Capstone_2
                         {
                             Console.WriteLine($"Task {taskList.IndexOf(t) + 1}");
                             Console.WriteLine("Done?      Due Date     Team Member     Description");
-                            Console.WriteLine($"{t.DoneNotDone}     {t.DueDate}     {t.MemberName}     {t.BriefDescription}");
+                            Console.WriteLine($"{t.DoneNotDone}    {t.DueDate}    {t.MemberName}     {t.BriefDescription}");
                             Console.WriteLine();
                         }                        
                         break;
@@ -65,7 +65,7 @@ namespace Task_List___Capstone_2
                         x--;
                         Console.WriteLine($"Task {x}");
                         Console.WriteLine("Done?      Due Date     Team Member     Description");
-                        Console.WriteLine($"{taskList[x].DoneNotDone}     {taskList[x].DueDate}     {taskList[x].MemberName}     {taskList[x].BriefDescription}");
+                        Console.WriteLine($"{taskList[x].DoneNotDone}    {taskList[x].DueDate}    {taskList[x].MemberName}     {taskList[x].BriefDescription}");
                         Console.WriteLine();
 
                         Console.WriteLine($"Are you sure you want to compelete this task? Y/N: ");                        
@@ -187,7 +187,7 @@ namespace Task_List___Capstone_2
             string name, description;
             DateTime dueDate;
 
-            Console.WriteLine("For a new task: ");
+            Console.WriteLine("NEW TASK ");
             Console.Write("Please enter the name of the Team Member who will be responsible for this task: ");
             name = Console.ReadLine();
 

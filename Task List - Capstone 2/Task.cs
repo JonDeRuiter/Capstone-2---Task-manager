@@ -11,7 +11,7 @@ namespace Task_List___Capstone_2
         //Variables
         private string memberName;
         private string briefDescription;
-        private DateTime dueDate;
+        private string dueDate;
         private bool doneNotDone;
 
         //Properties
@@ -25,7 +25,7 @@ namespace Task_List___Capstone_2
             get { return briefDescription; }
             set { briefDescription = value; }
         }
-        public DateTime DueDate
+        public string DueDate
         {
             get { return dueDate; }
             set { dueDate = value; }
@@ -37,17 +37,19 @@ namespace Task_List___Capstone_2
         }
         
         //Constructors
-        public Task(string memberName, string briefDescription, DateTime dueDate)
+        public Task(string memberName, string briefDescription, DateTime dateDue)
         {
             this.memberName = memberName;
             this.briefDescription = briefDescription;
-            this.dueDate = dueDate;
+            //Formats datetime to remove hours so that I don't have to format it everytime the object's dueDate is called
+            
+            this.dueDate = dateDue.ToString("MM/dd/yyyy");
             this.DoneNotDone = false;
         }
 
         //Methods
 
-
+        //Could have a method to print each task info?
 
     }
 }
