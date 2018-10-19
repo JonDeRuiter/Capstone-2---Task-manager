@@ -42,10 +42,21 @@ namespace Task_List___Capstone_2
                         }                        
                         break;
                     case 2:
+                        //Add Tasks
                         taskList.Add(NewTask());
                         break;
                     case 3:
                         //Delete Tasks
+                        int toDelete = DeleteTask(taskList.Count);
+                        
+                        if (toDelete >= 0)
+                        {
+                            taskList.RemoveAt(toDelete);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Returning to main menu.");
+                        }
                         break;
                     case 4:
                         //Mark Task Complete
@@ -56,9 +67,9 @@ namespace Task_List___Capstone_2
 
                     default:
                         break;
+                        
                 }
-                            
-                Console.ReadLine();                
+                Console.WriteLine();
             } while (ender);
         }
         public static int Menu()
@@ -70,7 +81,7 @@ namespace Task_List___Capstone_2
             Console.WriteLine("     4. Mark Task Complete");
             Console.WriteLine("     5. Quite");
             Console.Write("What would you like to do?: ");
-            int x = IsGoodDigit(Console.ReadLine());
+            int x = IsGoodDigit(Console.ReadLine(), 5);
             return x;
 
         }
@@ -105,20 +116,24 @@ namespace Task_List___Capstone_2
                     {
                         throw new Exception("Input must be a digit.");
                     }
+                    
                 }
+                x = int.Parse(input);
+                return x;
             }            
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
                 Console.Write("Please try again: ");
                 x = IsDigit(Console.ReadLine());
+                return x;
             }
-            x = int.Parse(input);
-            return x;
+            
+            
         }
-        public static bool IsChoice(int x)
+        public static bool IsChoice(int x, int range)
         {
-            if (x > 0 && x < 6)
+            if (x > 0 && x < (range + 1))
             {
                 return true;
             }
@@ -127,17 +142,17 @@ namespace Task_List___Capstone_2
                 return false;
             }
         }
-        public static int IsGoodDigit(string input)
+        public static int IsGoodDigit(string input, int range)
         {
             int x = IsDigit(input);
-            if (IsChoice(x))
+            if (IsChoice(x, range))
             {
                 return x;
             }
             else
             {
-                Console.Write("I didn't understand that. \nPlease try again:");
-                x = IsGoodDigit(Console.ReadLine());
+                Console.Write("I didn't understand that. \nPlease try again: ");
+                x = IsGoodDigit(Console.ReadLine(), range);
                 return x;
             }
         }
@@ -160,6 +175,30 @@ namespace Task_List___Capstone_2
             }
             Task task = new Task(name, description, dueDate);
             return task;
+        }
+        public static int DeleteTask(int range)
+        {
+            Console.Write($"Which task would you like to delete? \n 1-{range}: ");
+            int x = IsGoodDigit(Console.ReadLine(), (range));
+            Console.Write($"Are you sure you want to delete task # {x}? \nY/N: ");
+            string confirm = Console.ReadLine();
+            confirm = confirm.ToLower();
+            if (confirm == "y")
+            {
+                Console.WriteLine($"Deleting task # {x}...");                
+            }
+            else if (confirm == "n")
+            {
+                x = -1;
+            }
+            else
+            {
+                Console.WriteLine("I didn't understand that.");
+                x = DeleteTask(range);
+            }
+            x--;
+            return x;
+
         }
     }
 }
