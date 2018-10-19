@@ -39,11 +39,10 @@ namespace Task_List___Capstone_2
                             Console.WriteLine("Done?      Due Date     Team Member     Description");
                             Console.WriteLine($"{t.DoneNotDone}     {t.DueDate}     {t.MemberName}     {t.BriefDescription}");
                             Console.WriteLine();
-                        }
-                        
+                        }                        
                         break;
                     case 2:
-                        //Add Task
+                        taskList.Add(NewTask());
                         break;
                     case 3:
                         //Delete Tasks
@@ -142,6 +141,25 @@ namespace Task_List___Capstone_2
                 return x;
             }
         }
-        
+        public static Task NewTask()
+        {
+            string name, description;
+            DateTime dueDate;
+
+            Console.WriteLine("For a new task: ");
+            Console.Write("Please enter the name of the Team Member who will be responsible for this task: ");
+            name = Console.ReadLine();
+
+            Console.Write("Please enter a description of the task: ");
+            description = Console.ReadLine();
+
+            Console.Write("Please enter a date that the task must be finished by: ");
+            while (!(DateTime.TryParse(Console.ReadLine(), out dueDate)))
+            {
+                Console.Write("Please enter a valid date: ");
+            }
+            Task task = new Task(name, description, dueDate);
+            return task;
+        }
     }
 }
