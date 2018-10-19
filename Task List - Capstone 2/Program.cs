@@ -17,29 +17,49 @@ namespace Task_List___Capstone_2
 
             bool ender = true;
 
+            DateTime dueDate = DateTime.Parse("1 / 12 / 2019");
+
+            Task firstTask = new Task("Jimmy John", "Make a Sandwich", dueDate);
+            Task secondTask = new Task("Little Caesars", "Yell: PIZZA PIZZA!", dueDate);
+            taskList.Add(firstTask);
+            taskList.Add(secondTask);
+
+            //Make the date display w/out the time
+
             do
             {
                 int choice = Menu();
                 switch (choice)
                 {
                     case 1:
+                        Console.WriteLine("\n LIST TASKS");
+                        foreach (Task t in taskList)
+                        {
+                            Console.WriteLine($"Task {taskList.IndexOf(t) + 1}");
+                            Console.WriteLine("Done?      Due Date     Team Member     Description");
+                            Console.WriteLine($"{t.DoneNotDone}     {t.DueDate}     {t.MemberName}     {t.BriefDescription}");
+                            Console.WriteLine();
+                        }
+                        
                         break;
                     case 2:
+                        //Add Task
                         break;
                     case 3:
+                        //Delete Tasks
                         break;
                     case 4:
+                        //Mark Task Complete
                         break;
                     case 5:
+                        ender = false;
                         break;
 
                     default:
                         break;
                 }
-
-
-                Console.ReadLine();
-                ender = true;
+                            
+                Console.ReadLine();                
             } while (ender);
         }
         public static int Menu()
@@ -122,10 +142,6 @@ namespace Task_List___Capstone_2
                 return x;
             }
         }
-        public static void DisplayTasks()
-        {
-            //get tasks
-            //display tasks in order
-        }
+        
     }
 }
